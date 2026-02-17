@@ -1,11 +1,8 @@
-from huggingface_hub import snapshot_download
-from transformers import AutoTokenizer, AutoModelForCausalLM
+
+from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
 model_name = "mistralai/Mistral-7B-v0.1"
-
-# Downloads everything locally once
-local_model_path = snapshot_download(model_name)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(
