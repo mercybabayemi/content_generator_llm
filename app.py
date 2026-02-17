@@ -1,7 +1,6 @@
 import streamlit as st
 from datetime import datetime
 
-from fast_api.apis import generate_endpoint
 from llm_client.generate import generate
 
 st.set_page_config(page_title="ENUMVERSE Course Content Generator", layout="wide")
