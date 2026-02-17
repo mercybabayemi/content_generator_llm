@@ -1,6 +1,9 @@
 import streamlit as st
 from datetime import datetime
 
+from fast_api.apis import generate_endpoint
+from llm_client.generate import generate
+
 st.set_page_config(page_title="ENUMVERSE Course Content Generator", layout="wide")
 
 # ---- Session state for chat history ----
@@ -91,7 +94,7 @@ def mock_generate_reply(user_text: str) -> str:
         f"> {user_text}\n\n"
         f"**(Placeholder output — connect your model next.)**\n\n"
         f"- Timestamp: {now}\n"
-        f"- Next step: replace `mock_generate_reply()` with your API/model call."
+        #f"- Next step: replace `mock_generate_reply()` with your API/model call."
     )
 
 if prompt:
@@ -101,7 +104,8 @@ if prompt:
     # Generate assistant response
     with st.chat_message("assistant"):
         with st.spinner("Generating..."):
-            reply = mock_generate_reply(prompt)
+            # reply = mock_generate_reply(prompt)
+            reply = generate(prompt)
             st.markdown(reply)
 
     # Save assistant response
