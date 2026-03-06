@@ -4,3 +4,7 @@ class ComplexityLevel(Enum):
     BEGINNER = "BEGINNER"
     INTERMEDIATE = "INTERMEDIATE"
     ADVANCED = "ADVANCED"
+
+class Visibility(Enum):
+    PUBLIC = "PUBLIC"
+    PRIVATE = "PRIVATE"
