@@ -8,3 +8,9 @@ class ComplexityLevel(Enum):
 class Visibility(Enum):
     PUBLIC = "PUBLIC"
     PRIVATE = "PRIVATE"
+
+class SkillCategory(Enum):
+    BEHAVIOURAL = "BEHAVIOURAL"
+    TECHNICAL = "TECHNICAL"
+    LANGUAGE = "LANGUAGE"
+    COGNITIVE = "COGNITIVE"
