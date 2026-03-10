@@ -15,14 +15,14 @@ def init_llm() -> AsyncOpenAI:
 
     if _client is None:
         _client = AsyncOpenAI(
-            base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
-            api_key=os.getenv("API_KEY", "ollama"),
+            base_url=os.getenv("OLLAMA_BASE_URL"),
+            api_key=os.getenv("API_KEY")
         )
 
     return _client
 
 
-async def call_llm(system: str, user: str, model: str = "qwen2.5:3b") -> dict:
+async def call_llm(system: str, user: str, model: str = "phi3.5") -> dict:
     """Send a prompt to the LLM and return parsed JSON."""
 
     client = init_llm()
