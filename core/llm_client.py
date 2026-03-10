@@ -1,6 +1,9 @@
 import json
 import os
 from openai import AsyncOpenAI
+from dotenv import load_dotenv()
+
+load_dotenv()
 
 # Initialize client once (avoid reconnecting every request)
 _client: AsyncOpenAI | None = None
