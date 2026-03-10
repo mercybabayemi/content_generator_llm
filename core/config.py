@@ -1,8 +1,12 @@
 from pydantic_settings import BaseSettings
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Settings(BaseSettings):
-    API_KEY: str = "ollama"
-    MODEL_NAME: str = "qwen2.5:3b"
-    BASE_URL: str = "http://localhost:11434/v1"
+    api_key: str = os.getenv("API_KEY")
+    model_name: str = os.getenv("MODEL_NAME")
+    ollama_base_url: str = os.getenv("OLLAMA_BASE_URL")
 
 settings = Settings()

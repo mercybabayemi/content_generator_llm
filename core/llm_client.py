@@ -1,7 +1,8 @@
 import json
 import os
 from openai import AsyncOpenAI
-from dotenv import load_dotenv()
+from dotenv import load_dotenv
+import re
 
 load_dotenv()
 
@@ -29,6 +30,7 @@ async def call_llm(system: str, user: str, model: str = "phi3.5") -> dict:
 
     response = await client.chat.completions.create(
         model=model,
+        response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": system},
             {"role": "user", "content": user},
@@ -36,11 +38,15 @@ async def call_llm(system: str, user: str, model: str = "phi3.5") -> dict:
     )
 
     raw = response.choices[0].message.content
+   # cleaned = re.sub(r"```(?:json)?|```", "", raw).strip()
 
     try:
-        return json.loads(raw)
+         return json.loads(raw)
+   #     return json.loads(cleaned)
 
     except json.JSONDecodeError as e:
-        print(f"JSON parse error: {e}")
-        print(f"Raw response: {raw}")
-        return {}
+        raise ValueError(
+        f"LLM did not return  valid JSON. \n"
+        f"JSON parse error: {e}"
+        f"Raw response: {raw}"
+        )
