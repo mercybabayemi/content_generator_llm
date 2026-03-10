@@ -18,8 +18,8 @@ def init_llm() -> AsyncOpenAI:
 
     if _client is None:
         _client = AsyncOpenAI(
-            base_url=settings.ollama_base_url, #os.getenv("OLLAMA_BASE_URL"),
-            api_key=settings.api_key #os.getenv("API_KEY")
+            base_url=settings.ollama_base_url, 
+            api_key=settings.api_key 
         )
 
     return _client
