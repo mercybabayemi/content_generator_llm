@@ -8,5 +8,5 @@ class ProgramAgentSchema(BaseModel):
     learning_outcomes: str
     objectives: str
     prerequisites: str
-    introductory_video: str|None
-    image: str|None
+    introductory_video: str|None = None
+    image: str|None = None
